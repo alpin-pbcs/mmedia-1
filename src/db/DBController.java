@@ -1,20 +1,16 @@
 package db;
-
-
-
 /**
  * Created by Sebastian on 05.05.14.
  */
 
     import java.sql.Connection;
-    import java.sql.Date;
     import java.sql.DriverManager;
-    import java.sql.PreparedStatement;
     import java.sql.ResultSet;
     import java.sql.SQLException;
     import java.sql.Statement;
+    import java.util.ArrayList;
 
-    class DBController {
+class DBController {
 
         private static final DBController dbcontroller = new DBController();
         private static Connection connection;
@@ -63,12 +59,58 @@ package db;
             });
         }
 
+        public void /*ArrayList*/ selectArtikel(){
+             try {
+                  //Arraylist ar = new ArrayList();
+                  Statement stmt = connection.createStatement();
+                  ResultSet rs = stmt.executeQuery("SELECT * FROM Artikel;");
+                    while (rs.next()) {
+                        System.out.println(rs.getString(1));
+                        System.out.println(rs.getString(2));
+                        System.out.println(rs.getString(3));
+                        System.out.println(rs.getString(4));
+                        // einfügen in die Objekte
+                  }
+                  rs.close();
+                  connection.close();
+             } catch (SQLException e) {
+             System.err.println("Couldn't handle DB-Query: Artikel");
+             e.printStackTrace();
+             }
+           //  return ar;
+        }
+
+    public void/*ArrayList*/ selectAuftrag(){
+        try {
+            //Arraylist ar = new ArrayList();
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Auftrag;");
+            while (rs.next()) {
+                // einfügen in die Objekte
+            }
+            rs.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.err.println("Couldn't handle DB-Query: Auftrag");
+            e.printStackTrace();
+        }
+        //return ar;
+    }
 
 
-        private void handleDB() {
+
+
+
+
+
+
+
+
+
+        public void handleDB() {
             try {
                 Statement stmt = connection.createStatement();
-                stmt.executeUpdate("DROP TABLE IF EXISTS books;");
+               /* stmt.executeUpdate("DROP TABLE IF EXISTS books;");
                 stmt.executeUpdate("CREATE TABLE books (author, title, publication, pages, price);");
                 stmt.execute("INSERT INTO books (author, title, publication, pages, price) VALUES ('Paulchen Paule', 'Paul der Penner', '2001-05-06', '1234', '5.67')");
 
@@ -91,16 +133,13 @@ package db;
 
                 connection.setAutoCommit(false);
                 ps.executeBatch();
-                connection.setAutoCommit(true);
+                connection.setAutoCommit(true);*/
 
-                ResultSet rs = stmt.executeQuery("SELECT * FROM books;");
+                ResultSet rs = stmt.executeQuery("SELECT * FROM Lieferstatus;");
                 while (rs.next()) {
-                    System.out.println("Autor = " + rs.getString("author"));
-                    System.out.println("Titel = " + rs.getString("title"));
-                    System.out.println("Erscheinungsdatum = "
-                            + rs.getDate("publication"));
-                    System.out.println("Seiten = " + rs.getInt("pages"));
-                    System.out.println("Preis = " + rs.getDouble("price"));
+                    System.out.println("Status_ID = " + rs.getString("Status_ID"));
+                    System.out.println("Bezeichnung = " + rs.getString("Bezeichnung"));
+
                 }
                 rs.close();
                 connection.close();
@@ -109,7 +148,6 @@ package db;
                 e.printStackTrace();
             }
         }
-
 
 
 }
