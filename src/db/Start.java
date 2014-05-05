@@ -10,5 +10,6 @@ public class Start{
     public static void main(String[] args){
         DBController dbc = DBController.getInstance();
         dbc.getInstance().initDBConnection();
+        //dbc.getInstance().closeDBConnection();
     }
 }
