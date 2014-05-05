@@ -1,9 +1,9 @@
 package presentation;
 
-import presentation.article.Article;
+import presentation.forms.login.Login;
 
 public class Main {
-    public static void Main(String[] args) {
-        Article article = new Article();
+    public static void main(String[] args) {
+        new Login();
     }
 }

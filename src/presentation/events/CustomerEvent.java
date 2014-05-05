@@ -2,12 +2,12 @@ package presentation.events;
 
 import javax.swing.*;
 import java.awt.event.*;
-import presentation.forms.article.*;
+import presentation.forms.customer.*;
 
-public class ArticleEvent extends WindowAdapter implements ActionListener {
+public class CustomerEvent extends WindowAdapter implements ActionListener {
     JFrame frame = null;
 
-    public ArticleEvent(JFrame frame) {
+    public CustomerEvent(JFrame frame) {
         this.frame = frame;
     }
 
@@ -19,10 +19,12 @@ public class ArticleEvent extends WindowAdapter implements ActionListener {
             bu_work = (JButton) object;
             if(bu_work.getName() == "btn_save"){
                 frame.dispose();
-            } else if(bu_work.getName() == "btn_addarticle") {
-                new Article();
-            } else if(bu_work.getName() == "btn_editarticle") {
-                new Article();
+            } else if(bu_work.getName() == "btn_addCustomer") {
+                new Customer();
+            } else if(bu_work.getName() == "btn_editCustomer") {
+                new Customer();
+            } else if(bu_work.getName() == "btn_delCustomer") {
+
             } else if(bu_work.getName() == "btn_search") {
 
             } else if(bu_work.getName() == "btn_reset") {
