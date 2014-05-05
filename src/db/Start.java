@@ -7,8 +7,8 @@ public class Start{
 
 
 
-    public void Main(){
+    public static void main(String[] args){
         DBController dbc = DBController.getInstance();
-        dbc.initDBConnection();
+        dbc.getInstance().initDBConnection();
     }
 }

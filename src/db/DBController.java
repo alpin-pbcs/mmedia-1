@@ -18,16 +18,18 @@ package db;
 
         private static final DBController dbcontroller = new DBController();
         private static Connection connection;
-        private static final String DB_PATH = System.getProperty("user.home") + "/" + "testdb.db";
+        private static final String DB_PATH = "C:/Users/Sebastian/IdeaProjects/datenbank/Bestellversandshop.db3";
+                                             //System.getProperty("user.home") + "/" + "testdb.db";
+         static {
+         try {
+           Class.forName("org.sqlite.JDBC");
+         } catch (ClassNotFoundException e) {
+           System.err.println("Fehler beim Laden des JDBC-Treibers");
+           e.printStackTrace();
 
-        static {
-            try {
-                Class.forName("org.sqlite.JDBC");
-            } catch (ClassNotFoundException e) {
-                System.err.println("Fehler beim Laden des JDBC-Treibers");
-                e.printStackTrace();
-            }
         }
+        }
+
 
         private DBController(){
         }
@@ -36,7 +38,7 @@ package db;
             return dbcontroller;
         }
 
-        private void initDBConnection() {
+        public void initDBConnection() {
             try {
                 if (connection != null)
                     return;
