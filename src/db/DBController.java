@@ -125,6 +125,8 @@ class DBController {
         //return ar;
     }
 
+
+
     public void/*ArrayList*/ selectAufArt(){
         try {
             //Arraylist ar = new ArrayList();
