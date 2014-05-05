@@ -1,21 +1,20 @@
-package presentation;
+package presentation.events;
 
 import javax.swing.*;
 import java.awt.event.*;
 
-public class MyWindowEvent extends WindowAdapter
+public class WindowEvent extends WindowAdapter
         implements ActionListener
 {
     JFrame frame = null;
 
-    public MyWindowEvent(JFrame frame){
+    public WindowEvent(JFrame frame){
         this.frame = frame;
     }
 
-    public void windowClosing (WindowEvent e) {
+    public void windowClosing (java.awt.event.WindowEvent e) {
         JFrame frame = null;
         frame =(JFrame) e.getSource();
-        System.out.println("Hallo");
         frame.dispose();
     }
 
@@ -23,12 +22,9 @@ public class MyWindowEvent extends WindowAdapter
         Object object = e.getSource();
         JButton bu_work = null;
 
-        System.out.println("Test");
-
         if (object instanceof JButton){
             bu_work = (JButton) object;
-            if(bu_work.getName() == "bt_abbrechen"){
-                System.out.println("Hallo");
+            if(bu_work.getName() == "btn_abort"){
                 frame.dispose();
             }
         }

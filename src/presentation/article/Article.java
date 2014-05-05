@@ -1,20 +1,22 @@
 package presentation.article;
 
 import javax.swing.*;
-import presentation.MyWindowEvent;
+import presentation.events.*;
 
 public class Article{
-    private JButton bt_abbrechen;
-    private JButton bt_speichern;
+    private JButton btn_abort;
+    private JButton btn_save;
     private JTextField tf_artnr;
-    private JTextField tf_artbez;
-    private JTextField tf_anzahl;
-    private JTextField tf_Preis;
+    private JTextField tf_artdesc;
+    private JTextField tf_sz;
+    private JTextField tf_price;
     private JComboBox cb_status;
-    private JPanel panel1;
+    private JPanel pan_art;
 
 
-    MyWindowEvent windowevent = null;
+    WindowEvent windowevent = null;
+    ArticleEvent articleevent = null;
+
 
     public Article() {
         this.createUIComponents();
@@ -22,12 +24,16 @@ public class Article{
 
     private void createUIComponents() {
         JFrame frame = new JFrame("Artikel hinzufügen/bearbeiten");
-        windowevent = new MyWindowEvent(frame);
+        windowevent = new WindowEvent(frame);
+        articleevent = new ArticleEvent(frame);
 
-        bt_abbrechen.addActionListener(windowevent);
-        bt_abbrechen.setName("bt_abbrechen");
+        btn_abort.addActionListener(windowevent);
+        btn_abort.setName("btn_abort");
 
-        frame.setContentPane(panel1);
+        btn_save.addActionListener(articleevent);
+        btn_save.setName("btn_save");
+
+        frame.setContentPane(pan_art);
         frame.pack();
         frame.setVisible(true);
     }
