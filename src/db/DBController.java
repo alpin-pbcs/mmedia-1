@@ -1,9 +1,10 @@
 package db;
 
+
+
 /**
  * Created by Sebastian on 05.05.14.
  */
-public class Database {
 
     import java.sql.Connection;
     import java.sql.Date;

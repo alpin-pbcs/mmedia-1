@@ -5,7 +5,10 @@ package db;
  */
 public class Start{
 
-    public void Main(){
 
+
+    public void Main(){
+        DBController dbc = DBController.getInstance();
+        dbc.initDBConnection();
     }
 }
