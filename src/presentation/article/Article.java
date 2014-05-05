@@ -13,16 +13,10 @@ public class Article{
     private JComboBox cb_status;
     private JPanel pan_art;
 
-
     WindowEvent windowevent = null;
     ArticleEvent articleevent = null;
 
-
     public Article() {
-        this.createUIComponents();
-    }
-
-    private void createUIComponents() {
         JFrame frame = new JFrame("Artikel hinzufügen/bearbeiten");
         windowevent = new WindowEvent(frame);
         articleevent = new ArticleEvent(frame);

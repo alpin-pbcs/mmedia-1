@@ -1,9 +1,7 @@
 package presentation.customer;
 
-import presentation.events.WindowEvent;
-
+import presentation.events.*;
 import javax.swing.*;
-
 
 public class Customer{
     private JButton btn_abort;
