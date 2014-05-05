@@ -97,9 +97,49 @@ class DBController {
         //return ar;
     }
 
+    public void/*ArrayList*/ selectKunde(){
+        try {
+            //Arraylist ar = new ArrayList();
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Kunde JOIN Adresse ON Kunde.FK_Adressnummer = Adresse.Adressnummer;");
+            while (rs.next()) {
+                System.out.println(rs.getString(1));
+                System.out.println(rs.getString(2));
+                System.out.println(rs.getString(3));
+                System.out.println(rs.getString(4));
+                System.out.println(rs.getString(5));
+                System.out.println(rs.getString(8));
+                System.out.println(rs.getString(9));
+                System.out.println(rs.getString(10));
+                System.out.println(rs.getString(11));
+                // einfügen in die Objekte
+                // Index 6 und 7 nicht wählbar
+            }
+            rs.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.err.println("Couldn't handle DB-Query: Kunde");
+            e.printStackTrace();
+        }
+        //return ar;
+    }
 
-
-
+    public void/*ArrayList*/ selectAufArt(){
+        try {
+            //Arraylist ar = new ArrayList();
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM AufArt;");
+            while (rs.next()) {
+                // einfügen in die Objekte
+            }
+            rs.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.err.println("Couldn't handle DB-Query: AufArt");
+            e.printStackTrace();
+        }
+        //return ar;
+    }
 
 
 
