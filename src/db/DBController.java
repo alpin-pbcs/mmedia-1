@@ -3,6 +3,7 @@ package db;
  * Created by Sebastian on 05.05.14.
  */
 
+    import java.sql.*;
     import java.sql.Connection;
     import java.sql.DriverManager;
     import java.sql.ResultSet;
@@ -141,53 +142,54 @@ class DBController {
         //return ar;
     }
 
+    public void writeArtikel (){
+        try {
+            //Statement stmt = connection.createStatement();
+            PreparedStatement ps = connection
+                    .prepareStatement("INSERT OR REPLACE INTO Artikel VALUES (?, ?, ?, ?, ?);");
+            //Schleife über alle Artikel in die DB
 
-
-
-
-
-
-        public void handleDB() {
-            try {
-                Statement stmt = connection.createStatement();
-               /* stmt.executeUpdate("DROP TABLE IF EXISTS books;");
-                stmt.executeUpdate("CREATE TABLE books (author, title, publication, pages, price);");
-                stmt.execute("INSERT INTO books (author, title, publication, pages, price) VALUES ('Paulchen Paule', 'Paul der Penner', '2001-05-06', '1234', '5.67')");
-
-                PreparedStatement ps = connection
-                        .prepareStatement("INSERT INTO books VALUES (?, ?, ?, ?, ?);");
-
-                ps.setString(1, "Willi Winzig");
-                ps.setString(2, "Willi's Wille");
-                ps.setDate(3, Date.valueOf("2011-05-16"));
-                ps.setInt(4, 432);
-                ps.setDouble(5, 32.95);
-                ps.addBatch();
-
-                ps.setString(1, "Anton Antonius");
-                ps.setString(2, "Anton's Alarm");
-                ps.setDate(3, Date.valueOf("2009-10-01"));
-                ps.setInt(4, 123);
-                ps.setDouble(5, 98.76);
+                ps.setInt(1,        /*artikelnummer*/);
+                ps.setString(2, ""  /*bezeichnung*/);
+                ps.setInt(3,        /*lieferstatus*/);
+                ps.setFloat(4,      /*preis*/);
                 ps.addBatch();
 
                 connection.setAutoCommit(false);
                 ps.executeBatch();
-                connection.setAutoCommit(true);*/
-
-                ResultSet rs = stmt.executeQuery("SELECT * FROM Lieferstatus;");
-                while (rs.next()) {
-                    System.out.println("Status_ID = " + rs.getString("Status_ID"));
-                    System.out.println("Bezeichnung = " + rs.getString("Bezeichnung"));
-
-                }
-                rs.close();
-                connection.close();
-            } catch (SQLException e) {
-                System.err.println("Couldn't handle DB-Query");
-                e.printStackTrace();
-            }
+                connection.setAutoCommit(true);
+        } catch (SQLException e) {
+            System.err.println("Couldn't Write DB-Query");
+            e.printStackTrace();
         }
+    }
+
+    public void writeKunde (){
+        try {
+            //Statement stmt = connection.createStatement();
+            PreparedStatement ps = connection
+                    .prepareStatement("INSERT OR REPLACE INTO Kunde VALUES (?, ?, ?, ?, ?);");
+            PreparedStatement ps2 = connection
+                    .prepareStatement("INSERT OR REPLACE INTO Adresse VALUES (?, ?, ?, ?, ?);");
+            //Schleife über alle Artikel in die DB
+
+           /* ps.setInt(1,        artikelnummer);
+            ps.setString(2, ""  bezeichnung);
+            ps.setInt(3,        lieferstatus);
+            ps.setFloat(4,      preis);
+            ps.addBatch();
+                */
+            connection.setAutoCommit(false);
+            ps.executeBatch();
+            connection.setAutoCommit(true);
+        } catch (SQLException e) {
+            System.err.println("Couldn't Write DB-Query");
+            e.printStackTrace();
+        }
+    }
+
+
+
 
 
 }
