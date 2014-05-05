@@ -1,7 +1,9 @@
 package presentation.customer;
 
+import presentation.events.WindowEvent;
+
 import javax.swing.*;
-import java.awt.event.WindowEvent;
+
 
 public class Customer{
     private JButton btn_abort;
@@ -26,7 +28,7 @@ public class Customer{
         JFrame frame = new JFrame("Kunde hinzufügen/bearbeiten");
         windowevent = new WindowEvent(frame);
 
-        btn_abort.addActionListener();
+        btn_abort.addActionListener(windowevent);
         btn_abort.setName("btn_abort");
 
         frame.setContentPane(panel1);
